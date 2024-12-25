@@ -5,28 +5,28 @@ pipeline{
 				parallel{
 					stage('sub-job1'){
 						steps{
-							echo "testing parallel stage"
-							echo "this is sub-job1"
+							sh 'echo "testing parallel stage"'
+							sh 'echo "this is sub-job1"'
 						}
 					}
 					stage('sub-job2'){
 						steps{
-							echo "this is sub-job2"
-							id jenkins
+							sh 'echo "this is sub-job2"'
+							sh 'id jenkins'
 						}
 					}
 				}
 			}
 			stage('system-check'){
 				steps{
-					lscpu
-					free -m
+					sh 'lscpu'
+					sh 'free -m'
 				}
 			}
 			stage('system-analysis'){
 				steps{
-					lsblk
-					free -g
+					sh 'lsblk' 
+					sh 'free -g'
 				}
 			}
 		}
